@@ -1228,6 +1228,35 @@ button {
   .footer-container {
     grid-template-columns: 1fr;
     gap: 2rem;
+    text-align: center;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-list a,
+  .address-container {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-map {
+    text-align: center;
   }
 
   /* CALCULATOR RESPONSIVE */
