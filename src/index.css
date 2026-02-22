@@ -1188,6 +1188,20 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .features-text-content {
+    text-align: center;
+  }
+
+  .features-text-content .title-underline {
+    margin: 0 auto;
+  }
+
+  .benefit-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
   .gallery-grid {
     grid-template-columns: 1fr;
   }
@@ -1199,6 +1213,12 @@ button {
 
   .industry-text {
     padding: 1.5rem;
+    text-align: center;
+  }
+
+  .industry-brand-logo {
+    margin: 0 auto 1.5rem auto;
+    display: block;
   }
 
   .industry-map iframe {

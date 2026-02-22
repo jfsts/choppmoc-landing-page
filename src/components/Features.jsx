@@ -53,7 +53,7 @@ const Features = () => {
                             </div>
                             <div className="benefit-text">
                                 <h3>Entrega Rápida</h3>
-                                <p>Receba a máquina de chopp pronta pro seu evento</p>
+                                <p>Receba a máquina de chopp pronta para o seu evento</p>
                             </div>
                         </div>
                     </div>
