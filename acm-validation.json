@@ -1,0 +1,31 @@
+{
+    "Comment": "ACM Validation records",
+    "Changes": [
+        {
+            "Action": "UPSERT",
+            "ResourceRecordSet": {
+                "Name": "_e931daa7091b84584cf9cdefd893cfd4.choppmoc.com.br.",
+                "Type": "CNAME",
+                "TTL": 300,
+                "ResourceRecords": [
+                    {
+                        "Value": "_89a4e024eb3d08844b130b1647d03cee.jkddzztszm.acm-validations.aws."
+                    }
+                ]
+            }
+        },
+        {
+            "Action": "UPSERT",
+            "ResourceRecordSet": {
+                "Name": "_03a120eba1bcd89ef7038a9255bab677.www.choppmoc.com.br.",
+                "Type": "CNAME",
+                "TTL": 300,
+                "ResourceRecords": [
+                    {
+                        "Value": "_cece123ee5c761dd24e635b1fe8f0396.jkddzztszm.acm-validations.aws."
+                    }
+                ]
+            }
+        }
+    ]
+}
