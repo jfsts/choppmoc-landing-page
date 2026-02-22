@@ -1,0 +1,18 @@
+{
+    "Comment": "Google Search Console Verification",
+    "Changes": [
+        {
+            "Action": "UPSERT",
+            "ResourceRecordSet": {
+                "Name": "choppmoc.com.br.",
+                "Type": "TXT",
+                "TTL": 300,
+                "ResourceRecords": [
+                    {
+                        "Value": "\"google-site-verification=eVKG_NVwPz5AKza3dKdcClWrhV7_E7QRngWrGV1xUtA\""
+                    }
+                ]
+            }
+        }
+    ]
+}
