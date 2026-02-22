@@ -1,0 +1,29 @@
+{
+    "Comment": "Alias to CloudFront",
+    "Changes": [
+        {
+            "Action": "UPSERT",
+            "ResourceRecordSet": {
+                "Name": "choppmoc.com.br.",
+                "Type": "A",
+                "AliasTarget": {
+                    "HostedZoneId": "Z2FDTNDATAQYW2",
+                    "DNSName": "d1j6icakxet17y.cloudfront.net.",
+                    "EvaluateTargetHealth": false
+                }
+            }
+        },
+        {
+            "Action": "UPSERT",
+            "ResourceRecordSet": {
+                "Name": "www.choppmoc.com.br.",
+                "Type": "A",
+                "AliasTarget": {
+                    "HostedZoneId": "Z2FDTNDATAQYW2",
+                    "DNSName": "d1j6icakxet17y.cloudfront.net.",
+                    "EvaluateTargetHealth": false
+                }
+            }
+        }
+    ]
+}
