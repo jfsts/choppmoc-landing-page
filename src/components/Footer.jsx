@@ -2,6 +2,8 @@ import React from 'react';
 import { MapPin, Phone, Instagram } from 'lucide-react';
 
 const Footer = () => {
+    const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=-16.717906971114633,-43.84515091534221";
+
     return (
         <footer id="contact" className="footer">
             <div className="footer-container">
@@ -26,10 +28,10 @@ const Footer = () => {
                             </a>
                         </li>
                         <li>
-                            <div className="address-container">
+                            <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="address-container">
                                 <MapPin size={24} className="contact-icon" />
                                 <span>Av. Dulce Sarmento, 1632 - Monte Carmelo<br />Montes Claros - MG, 39401-485</span>
-                            </div>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -48,6 +50,9 @@ const Footer = () => {
                         referrerPolicy="no-referrer-when-downgrade"
                         title="Localização ChoppMoc"
                     ></iframe>
+                    <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="map-button">
+                        Traçar Rota no Google Maps
+                    </a>
                 </div>
             </div>
 
