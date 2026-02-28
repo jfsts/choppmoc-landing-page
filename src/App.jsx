@@ -10,7 +10,7 @@ import './index.css';
 
 function App() {
   return (
-    <div className="app-container">
+    <div className="min-h-screen antialiased selection:bg-primary/30 selection:text-white">
       <Navbar />
       <main>
         <Hero />

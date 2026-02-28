@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, MapPin, Instagram } from 'lucide-react';
 import Hamburger from 'hamburger-react';
 
 const Navbar = () => {
@@ -14,31 +13,68 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const handleNavClick = (e, targetId) => {
+        e.preventDefault();
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            // Adjust offset conditionally: ~90px for mobile (to clear the fixed header), ~0px for desktop where sections have huge top padding
+            const offset = window.innerWidth < 1024 ? 90 : 0;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+            setIsMobileMenuOpen(false); // Close mobile menu if open
+        }
+    };
+
     return (
-        <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-            <div className="nav-container">
-                <a href="#" className="logo">
-                    <img src="/assets/Logo - Chopp Moc (para fundo verde).png" alt="ChoppMoc Logo" className="logo-img" />
+        <header className={`fixed top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-[#141e19]/70 backdrop-blur-[12px] border-b border-white/10 shadow-lg py-2' : 'bg-transparent py-4'}`}>
+            <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+                <a href="#hero" onClick={(e) => handleNavClick(e, 'hero')} className="flex items-center gap-3">
+                    <img src="/assets/Logo - Chopp Moc (para fundo verde).png" alt="ChoppMoc Logo" className={`transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`} />
                 </a>
 
-                <div className="nav-links desktop-only">
-                    <a href="#hero">Início</a>
-                    <a href="#features">O Chopp</a>
-                    <a href="#calculator">Calculadora</a>
-                    <a href="#gallery">Indústria</a>
-                    <a href="#contact">Contato</a>
+                {/* Desktop Nav */}
+                <div className="hidden md:flex items-center gap-8">
+                    <a href="#hero" onClick={(e) => handleNavClick(e, 'hero')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors relative group">
+                        Início
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#features" onClick={(e) => handleNavClick(e, 'features')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors relative group">
+                        O Chopp
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#calculator" onClick={(e) => handleNavClick(e, 'calculator')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors relative group">
+                        Calculadora
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#gallery" onClick={(e) => handleNavClick(e, 'gallery')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors relative group">
+                        Indústria
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="text-sm font-medium text-slate-300 hover:text-white transition-colors relative group">
+                        Contato
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 transition-all group-hover:w-full"></span>
+                    </a>
                 </div>
 
-                <a
-                    href="https://wa.me/5538998606066?text=Olá,%20gostaria%20de%20pedir%20um%20orçamento%20de%20Chopp%20para%20meu%20evento!"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cta-button desktop-only"
-                >
-                    Pedir Chopp
-                </a>
+                {/* CTA Desktop */}
+                <div className="hidden md:flex">
+                    <a
+                        href="https://wa.me/5538998606066?text=Olá,%20gostaria%20de%20pedir%20um%20orçamento%20de%20Chopp%20para%20meu%20evento!"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-full bg-yellow-500 px-6 py-2.5 text-sm font-bold text-[#141e19] shadow-[0_0_20px_rgba(234,179,8,0.3)] transition-all hover:bg-yellow-400 hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] hover:-translate-y-0.5 uppercase tracking-wide"
+                    >
+                        Pedir Chopp
+                    </a>
+                </div>
 
-                <div className="mobile-menu-btn mobile-only">
+                {/* Mobile Menu Button */}
+                <div className="md:hidden text-white">
                     <Hamburger
                         toggled={isMobileMenuOpen}
                         toggle={setIsMobileMenuOpen}
@@ -48,25 +84,26 @@ const Navbar = () => {
                         rounded
                     />
                 </div>
-            </div>
+            </nav>
 
+            {/* Mobile Menu Dropdown */}
             {isMobileMenuOpen && (
-                <div className="mobile-menu">
-                    <a href="#hero" onClick={() => setIsMobileMenuOpen(false)}>Início</a>
-                    <a href="#features" onClick={() => setIsMobileMenuOpen(false)}>O Chopp</a>
-                    <a href="#calculator" onClick={() => setIsMobileMenuOpen(false)}>Calculadora</a>
-                    <a href="#gallery" onClick={() => setIsMobileMenuOpen(false)}>Indústria</a>
-                    <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>Contato</a>
+                <div className="md:hidden absolute top-full left-0 right-0 bg-[#141e19]/95 backdrop-blur-3xl border-t border-white/10 p-6 flex flex-col gap-4 shadow-xl">
+                    <a href="#hero" onClick={(e) => handleNavClick(e, 'hero')} className="text-white font-medium border-b border-white/10 pb-2">Início</a>
+                    <a href="#features" onClick={(e) => handleNavClick(e, 'features')} className="text-white font-medium border-b border-white/10 pb-2">O Chopp</a>
+                    <a href="#calculator" onClick={(e) => handleNavClick(e, 'calculator')} className="text-white font-medium border-b border-white/10 pb-2">Calculadora</a>
+                    <a href="#gallery" onClick={(e) => handleNavClick(e, 'gallery')} className="text-white font-medium border-b border-white/10 pb-2">Indústria</a>
+                    <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="text-white font-medium border-b border-white/10 pb-2">Contato</a>
                     <a
                         href="https://wa.me/5538998606066"
-                        className="cta-button-mobile"
+                        className="rounded-full bg-yellow-500 px-6 py-3 text-center font-bold text-[#141e19] mt-2 shadow-lg"
                         onClick={() => setIsMobileMenuOpen(false)}
                     >
                         Pedir Chopp
                     </a>
                 </div>
             )}
-        </nav>
+        </header>
     );
 };
 
