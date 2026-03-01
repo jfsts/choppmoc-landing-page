@@ -13,7 +13,8 @@
 
 @layer base {
   html {
-    scroll-padding-top: 5rem;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
     /* Adjust for fixed navbar height */
   }
 

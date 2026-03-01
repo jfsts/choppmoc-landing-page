@@ -78,7 +78,10 @@ const Calculator = () => {
                                     onChange={(e) => setAdults(Number(e.target.value))}
                                     className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-yellow-500 hover:accent-yellow-400"
                                 />
-                                <span className="text-2xl font-bold text-primary min-w-[140px] text-right">{adults} pessoas</span>
+                                <div className="flex flex-col items-center justify-center shrink-0 w-[80px]">
+                                    <span className="text-3xl font-extrabold text-yellow-500 leading-none tabular-nums">{adults}</span>
+                                    <span className="text-xs uppercase tracking-wider text-slate-400 font-bold mt-1">Pessoas</span>
+                                </div>
                             </div>
                         </div>
 
@@ -116,7 +119,7 @@ const Calculator = () => {
                         <div className="grid sm:grid-cols-2 gap-8 rounded-2xl bg-gradient-to-br from-primary to-[#1a4a32] p-8 text-white shadow-xl">
                             <div>
                                 <h4 className="text-sm uppercase tracking-wide text-white/80 mb-4">Quantidade Ideal:</h4>
-                                <div className="text-5xl font-extrabold text-yellow-500 mb-2 leading-none">
+                                <div className="text-5xl font-extrabold text-yellow-500 mb-2 leading-none tabular-nums">
                                     {calculation.targetLiters} <small className="text-2xl text-white font-medium">Litros</small>
                                 </div>
                                 {useMargin && <span className="inline-block rounded-full bg-black/20 px-3 py-1 text-xs text-slate-200">Incluindo ~{calculation.marginLiters}L de segurança</span>}
@@ -125,25 +128,19 @@ const Calculator = () => {
                             <div>
                                 <h4 className="text-sm uppercase tracking-wide text-white/80 mb-4">Recomendação de Barris:</h4>
                                 <div className="flex flex-col gap-3 mb-4">
-                                    {calculation.kegs50 > 0 && (
-                                        <div className="flex items-center gap-3 rounded-xl bg-white/10 px-4 py-3">
-                                            <Database size={24} className="text-yellow-500" />
-                                            <div className="text-lg">
-                                                <strong className="text-yellow-500 text-xl">{calculation.kegs50}x</strong> {calculation.kegs50 === 1 ? 'Barril' : 'Barris'} de 50L
-                                            </div>
+                                    <div className={`flex items-center gap-3 rounded-xl bg-white/10 px-4 py-3 transition-opacity duration-300 ${calculation.kegs50 > 0 ? 'opacity-100' : 'opacity-40 grayscale'}`}>
+                                        <Database size={24} className="text-yellow-500" />
+                                        <div className="text-lg">
+                                            <strong className="text-yellow-500 text-xl tabular-nums">{calculation.kegs50}x</strong> {calculation.kegs50 === 1 ? 'Barril' : 'Barris'} de 50L
                                         </div>
-                                    )}
-                                    {calculation.kegs50 > 0 && calculation.kegs30 > 0 && (
-                                        <div className="text-center text-3xl font-extrabold text-white/50 leading-none -my-2">+</div>
-                                    )}
-                                    {calculation.kegs30 > 0 && (
-                                        <div className="flex items-center gap-3 rounded-xl bg-white/10 px-4 py-3">
-                                            <Database size={20} className="text-yellow-500" />
-                                            <div className="text-lg">
-                                                <strong className="text-yellow-500 text-xl">{calculation.kegs30}x</strong> {calculation.kegs30 === 1 ? 'Barril' : 'Barris'} de 30L
-                                            </div>
+                                    </div>
+
+                                    <div className={`flex items-center gap-3 rounded-xl bg-white/10 px-4 py-3 transition-opacity duration-300 ${calculation.kegs30 > 0 ? 'opacity-100' : 'opacity-40 grayscale'}`}>
+                                        <Database size={20} className="text-yellow-500" />
+                                        <div className="text-lg">
+                                            <strong className="text-yellow-500 text-xl tabular-nums">{calculation.kegs30}x</strong> {calculation.kegs30 === 1 ? 'Barril' : 'Barris'} de 30L
                                         </div>
-                                    )}
+                                    </div>
                                 </div>
                                 <div className="border-t border-white/20 pt-4 text-sm text-white/80">
                                     Rende aproximadamente <strong className="text-white">{Math.floor((calculation.total * 1000) / 400)} copos</strong> de 400ml.
