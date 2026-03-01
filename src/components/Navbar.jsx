@@ -18,7 +18,7 @@ const Navbar = () => {
     };
 
     return (
-        <header className={`fixed top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-[#141e19]/70 backdrop-blur-[12px] border-b border-white/10 shadow-lg py-2' : 'bg-transparent py-4'}`}>
+        <header className={`fixed top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-[#141e19]/70 backdrop-blur-md border-b border-white/10 shadow-lg py-2' : 'bg-transparent py-4'}`}>
             <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 <a href="#hero" onClick={handleNavClick} className="flex items-center gap-3">
                     <img src="/assets/Logo - Chopp Moc (para fundo verde).png" alt="ChoppMoc Logo" className={`transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`} />

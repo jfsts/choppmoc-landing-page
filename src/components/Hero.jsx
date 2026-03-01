@@ -2,7 +2,7 @@ import React from 'react';
 
 const Hero = () => {
     return (
-        <section id="hero" className="relative flex min-h-screen items-center justify-center pt-20 overflow-x-clip bg-[#141e19]">
+        <section id="hero" className="relative flex min-h-screen items-start lg:items-center justify-center pt-30 overflow-x-clip bg-[#141e19]">
             {/* Full bleed background */}
             <div className="absolute inset-0 z-0 overflow-hidden">
                 <video
@@ -15,19 +15,19 @@ const Hero = () => {
                     <source src="/assets/a54c90efe_Ecobier-Chopp-Caneca.mp4" type="video/mp4" />
                 </video>
                 {/* Dark gradient overlay to match modern design */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#141e19]/90 via-[#1a241e]/80 to-[#141e19]/90 z-10"></div>
+                <div className="absolute inset-0 bg-linear-to-br from-[#141e19]/90 via-[#1a241e]/80 to-[#141e19]/90 z-10"></div>
             </div>
 
             <div className="relative z-20 flex w-full max-w-7xl flex-col items-center justify-between gap-12 px-4 sm:px-6 lg:flex-row lg:px-8">
                 {/* Left Content */}
-                <div className="flex max-w-2xl flex-col items-center text-center lg:items-start lg:text-left gap-6 pt-10 lg:pt-0">
+                <div className="flex max-w-2xl flex-col items-center text-center lg:items-start lg:text-left gap-6 pt-8 lg:pt-0">
                     <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-300">
                         <span className="h-2 w-2 rounded-full bg-yellow-500"></span>
                         O Verdadeiro Sabor Ecobier
                     </span>
                     <h1 className="text-5xl font-bold leading-tight tracking-tight text-white lg:text-7xl">
                         Sua festa merece o <br />
-                        <span className="bg-[length:200%_auto] animate-[gradient_3s_linear_infinite] bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 via-yellow-200 to-yellow-500 drop-shadow-[0_0_15px_rgba(234,179,8,0.4)]">Melhor Chopp</span>
+                        <span className="bg-size-[200%_auto] animate-[gradient_3s_linear_infinite] bg-clip-text text-transparent bg-linear-to-r from-yellow-500 via-yellow-200 to-yellow-500 drop-shadow-[0_0_15px_rgba(234,179,8,0.4)]">Melhor Chopp</span>
                     </h1>
                     <p className="max-w-xl text-lg font-light leading-relaxed text-slate-300 sm:text-xl">
                         Descubra a Experiência ChoppMoc com o autêntico Chopp Ecobier na sua casa ou evento.

@@ -13,9 +13,9 @@ const Gallery = () => {
     ];
 
     return (
-        <section id="gallery" className="bg-[#0f1613] pt-12 pb-24 lg:py-24 object-contain">
+        <section id="gallery" className="bg-[#0f1613] pt-2 pb-12 lg:py-24 object-contain">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="mb-16 flex flex-col items-center text-center lg:items-start lg:text-left">
+                <div className="mb-6 lg:mb-16 flex flex-col items-center text-center lg:items-start lg:text-left">
                     <h2 className="text-3xl font-bold text-white sm:text-4xl">
                         Conheça a <br className="lg:hidden" /><span className="text-primary">Indústria Ecobier</span>
                     </h2>
@@ -64,14 +64,14 @@ const Gallery = () => {
 
                 <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:gap-6 mb-16">
                     {droneImages.map((src, index) => (
-                        <div key={index} className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/5 bg-[#141e19]">
+                        <div key={index} className="group relative aspect-4/3 overflow-hidden rounded-2xl border border-white/5 bg-[#141e19]">
                             <img
                                 src={src}
                                 alt={`Visão aérea Indústria Ecobier ${index + 1}`}
                                 loading="lazy"
                                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#0f1613]/90 via-[#0f1613]/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end justify-center pb-6">
+                            <div className="absolute inset-0 bg-linear-to-t from-[#0f1613]/90 via-[#0f1613]/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end justify-center pb-6">
                                 <span className="text-sm font-medium text-white tracking-wider uppercase transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0">Estrutura Ecobier</span>
                             </div>
                         </div>
@@ -80,7 +80,7 @@ const Gallery = () => {
 
                 {/* City Context Map */}
                 <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-lg bg-[#141e19] max-w-3xl mx-auto mt-16">
-                    <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent z-10"></div>
+                    <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-transparent via-primary/50 to-transparent z-10"></div>
                     <iframe
                         title="Localização Indústria Ecobier"
                         src="https://maps.google.com/maps?q=Socorro+Bebidas,+Socorro+-+SP&t=&z=14&ie=UTF8&iwloc=&output=embed"

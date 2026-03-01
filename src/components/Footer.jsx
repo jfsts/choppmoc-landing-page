@@ -5,7 +5,7 @@ const Footer = () => {
     const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=-16.717906971114633,-43.84515091534221";
 
     return (
-        <footer id="contact" className="bg-[#141e19] border-t border-white/10 pt-20 pb-8 text-slate-300">
+        <footer id="contact" className="bg-[#141e19] border-t border-white/10 pt-10 lg:pt-20 pb-8 text-slate-300">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="grid gap-12 lg:grid-cols-3 mb-16">
                     {/* Brand */}
