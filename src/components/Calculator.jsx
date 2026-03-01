@@ -135,6 +135,10 @@ const Calculator = () => {
                                         </div>
                                     </div>
 
+                                    {calculation.kegs50 > 0 && calculation.kegs30 > 0 && (
+                                        <div className="text-center text-3xl font-extrabold text-white/50 leading-none">+</div>
+                                    )}
+
                                     <div className={`flex items-center gap-3 rounded-xl bg-white/10 px-4 py-3 transition-opacity duration-300 ${calculation.kegs30 > 0 ? 'opacity-100' : 'opacity-40 grayscale'}`}>
                                         <Database size={20} className="text-yellow-500" />
                                         <div className="text-lg">
