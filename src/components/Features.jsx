@@ -1,83 +1,155 @@
 import React from 'react';
-import { GlassWater, ThumbsUp, Medal, Truck } from 'lucide-react';
+import { GlassWater, ThumbsUp, Medal, Truck, Droplets, Zap, Shield, Clock } from 'lucide-react';
+import GlassCard from './modern/GlassCard';
+import ScrollReveal from './modern/ScrollReveal';
 
 const Features = () => {
+    const features = [
+        {
+            icon: Medal,
+            title: 'Puro Malte',
+            description: 'Receita original com ingredientes selecionados e malte premium importado.',
+            color: 'emerald',
+        },
+        {
+            icon: GlassWater,
+            title: 'Refrescante',
+            description: 'Temperatura ideal e colarinho perfeito para máxima satisfação.',
+            color: 'amber',
+        },
+        {
+            icon: Shield,
+            title: 'Qualidade Garantida',
+            description: 'Processo produtivo moderno e seguro com certificação de qualidade.',
+            color: 'emerald',
+        },
+        {
+            icon: Truck,
+            title: 'Entrega Rápida',
+            description: 'Receba a máquina pronta para uso no seu evento em até 24 horas.',
+            color: 'amber',
+        },
+        {
+            icon: Droplets,
+            title: 'Sabor Autêntico',
+            description: 'O sabor inigualável do verdadeiro chopp Ecobier, fresco e natural.',
+            color: 'emerald',
+        },
+        {
+            icon: Zap,
+            title: 'Praticidade Total',
+            description: 'Máquina completa, fácil de usar e com todo suporte técnico incluso.',
+            color: 'amber',
+        },
+    ];
+
     return (
-        <section id="features" className="bg-[#141e19] pt-8 pb-12 lg:py-24">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+        <section id="features" className="relative py-24 bg-gradient-to-b from-[#0a0f0c] via-[#0d1a12] to-[#0a0f0c] overflow-hidden">
+            {/* Background decorations */}
+            <div className="absolute inset-0">
+                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#0a0f0c] to-transparent" />
+                <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0a0f0c] to-transparent" />
+                <div className="absolute top-1/2 left-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl -translate-x-1/2" />
+                <div className="absolute top-1/2 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl translate-x-1/2" />
+            </div>
 
-                    {/* Text Content */}
-                    <div className="flex flex-col items-center text-center lg:items-start lg:text-left gap-8">
-                        <div>
-                            <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-                                O Sabor Autêntico do <br className="lg:hidden" /><span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-200">Chopp Ecobier</span>
-                            </h2>
-                            <div className="mt-4 h-1 w-16 rounded bg-yellow-500 mx-auto lg:mx-0"></div>
-                        </div>
-
-                        <p className="max-w-xl text-lg text-slate-400">
-                            O Chopp Ecobier é produzido com os mais rigorosos padrões de qualidade,
-                            garantindo um sabor refrescante e inigualável. Uma experiência premium
-                            para paladares exigentes.
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Header */}
+                <ScrollReveal>
+                    <div className="text-center mb-16">
+                        <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-400 mb-6">
+                            <Zap className="w-4 h-4" />
+                            Por que escolher o Chopp Ecobier?
+                        </span>
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                            O Sabor Autêntico do
+                            <br />
+                            <span className="bg-gradient-to-r from-emerald-400 via-amber-300 to-emerald-400 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+                                Chopp Ecobier
+                            </span>
+                        </h2>
+                        <p className="text-lg text-stone-400 max-w-2xl mx-auto">
+                            Produzido com os mais rigorosos padrões de qualidade, 
+                            garantindo um sabor refrescante e inigualável para paladares exigentes.
                         </p>
-
-                        <div className="grid gap-6 sm:grid-cols-2 w-full">
-                            <div className="flex items-start gap-4 rounded-2xl border border-white/5 bg-white/5 p-6 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-white/10">
-                                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/20 text-primary">
-                                    <Medal size={24} />
-                                </div>
-                                <div>
-                                    <h3 className="mb-1 font-bold text-white">Puro Malte</h3>
-                                    <p className="text-sm text-slate-400">Receita original com ingredientes selecionados</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-4 rounded-2xl border border-white/5 bg-white/5 p-6 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-white/10">
-                                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/20 text-primary">
-                                    <GlassWater size={24} />
-                                </div>
-                                <div>
-                                    <h3 className="mb-1 font-bold text-white">Refrescante</h3>
-                                    <p className="text-sm text-slate-400">Temperatura ideal, colarinho perfeito</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-4 rounded-2xl border border-white/5 bg-white/5 p-6 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-white/10">
-                                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/20 text-primary">
-                                    <ThumbsUp size={24} />
-                                </div>
-                                <div>
-                                    <h3 className="mb-1 font-bold text-white">Qualidade Garantida</h3>
-                                    <p className="text-sm text-slate-400">Processo produtivo moderno e seguro</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-4 rounded-2xl border border-white/5 bg-white/5 p-6 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-white/10">
-                                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/20 text-primary">
-                                    <Truck size={24} />
-                                </div>
-                                <div>
-                                    <h3 className="mb-1 font-bold text-white">Entrega Rápida</h3>
-                                    <p className="text-sm text-slate-400">Receba a máquina pronta para o evento</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                </ScrollReveal>
 
-                    {/* Image Container */}
-                    <div className="relative mx-auto w-full max-w-xs sm:max-w-md lg:max-w-none">
-                        <div className="relative flex aspect-square sm:aspect-auto items-center justify-center rounded-full bg-linear-to-tr from-primary/10 to-transparent lg:aspect-4/3 lg:rounded-3xl lg:bg-none">
-                            <div className="absolute left-1/2 top-1/2 -z-10 h-48 w-48 sm:h-64 sm:w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-yellow-500/20 blur-3xl"></div>
-                            <img
-                                src="/assets/Copo_Joinvile_EcobierChopp.png"
-                                alt="Copo Joinvile Ecobier Chopp"
-                                className="relative z-10 w-48 sm:w-full sm:max-w-[320px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition-transform duration-700 hover:scale-105"
-                            />
-                        </div>
-                    </div>
-
+                {/* Features Grid */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {features.map((feature, index) => (
+                        <ScrollReveal key={index} delay={index * 0.1}>
+                            <GlassCard 
+                                variant={feature.color === 'emerald' ? 'primary' : 'amber'}
+                                hoverEffect
+                                glowOnHover
+                                className="p-8 h-full"
+                            >
+                                <div className="flex flex-col h-full">
+                                    {/* Icon */}
+                                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${
+                                        feature.color === 'emerald' 
+                                            ? 'bg-emerald-500/20 text-emerald-400' 
+                                            : 'bg-amber-500/20 text-amber-400'
+                                    }`}>
+                                        <feature.icon className="w-7 h-7" />
+                                    </div>
+                                    
+                                    {/* Content */}
+                                    <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
+                                    <p className="text-stone-400 flex-grow">{feature.description}</p>
+                                    
+                                    {/* Decorative line */}
+                                    <div className={`mt-6 h-1 w-12 rounded-full ${
+                                        feature.color === 'emerald' 
+                                            ? 'bg-gradient-to-r from-emerald-500 to-emerald-400' 
+                                            : 'bg-gradient-to-r from-amber-500 to-amber-400'
+                                    }`} />
+                                </div>
+                            </GlassCard>
+                        </ScrollReveal>
+                    ))}
                 </div>
+
+                {/* Product showcase */}
+                <ScrollReveal delay={0.3}>
+                    <div className="mt-20 relative">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-96 h-96 bg-gradient-to-r from-emerald-500/20 to-amber-500/20 rounded-full blur-3xl" />
+                        </div>
+                        <div className="relative flex flex-col lg:flex-row items-center gap-12 bg-gradient-to-r from-emerald-900/20 to-amber-900/20 rounded-3xl p-8 lg:p-12 border border-white/5">
+                            <div className="flex-1 text-center lg:text-left">
+                                <h3 className="text-3xl font-bold text-white mb-4">
+                                    Experimente a <span className="text-emerald-400">Diferença</span>
+                                </h3>
+                                <p className="text-stone-400 mb-6">
+                                    O Chopp Ecobier é mais do que uma bebida, é uma experiência. 
+                                    Cada gole reflete anos de tradição e compromisso com a qualidade.
+                                </p>
+                                <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+                                    <div className="flex items-center gap-2 text-emerald-400">
+                                        <Clock className="w-5 h-5" />
+                                        <span className="text-sm font-medium">Entrega em 24h</span>
+                                    </div>
+                                    <div className="flex items-center gap-2 text-amber-400">
+                                        <Shield className="w-5 h-5" />
+                                        <span className="text-sm font-medium">Garantia de qualidade</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex-shrink-0">
+                                <div className="relative">
+                                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/30 to-amber-500/30 blur-2xl rounded-full" />
+                                    <img
+                                        src="/assets/Copo_Joinvile_EcobierChopp.png"
+                                        alt="Copo Ecobier Chopp"
+                                        className="relative w-64 lg:w-80 drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)] animate-float"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ScrollReveal>
             </div>
         </section>
     );

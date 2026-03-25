@@ -1,15 +1,17 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { Calculator as CalcIcon, Database, Lightbulb, ClipboardList } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { Calculator as CalcIcon, Database, Lightbulb, ClipboardList, Beaker, Users, Clock } from 'lucide-react';
+import GlassCard from './modern/GlassCard';
+import ScrollReveal from './modern/ScrollReveal';
 
 const Calculator = () => {
     const [adults, setAdults] = useState(30);
-    const [duration, setDuration] = useState('media'); // curta, media, longa
+    const [duration, setDuration] = useState('media');
     const [useMargin, setUseMargin] = useState(true);
 
     const durationRates = {
-        curta: { label: 'Festa Curta (até 4h)', rate: 1 },
-        media: { label: 'Média/Longa (4h a 6h)', rate: 1.5 },
-        longa: { label: 'Churrasco/Dia Inteiro', rate: 2.5 }
+        curta: { label: 'Curta', sublabel: 'até 4h', rate: 1 },
+        media: { label: 'Média', sublabel: '4-6h', rate: 1.5 },
+        longa: { label: 'Longa', sublabel: '6h+', rate: 2.5 }
     };
 
     const calculateBarrels = (targetLiters) => {
@@ -46,177 +48,219 @@ const Calculator = () => {
     }, [adults, duration, useMargin]);
 
     return (
-        <section id="calculator" className="relative bg-[#0f1613] pt-8 pb-6 lg:py-24 overflow-hidden">
-            {/* Background elements */}
-            <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-96 h-96 bg-primary/20 rounded-full blur-[100px] pointer-events-none"></div>
-
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="mb-6 lg:mb-16 flex flex-col items-center text-center lg:items-start lg:text-left">
-                    <h2 className="text-3xl font-bold flex flex-col lg:flex-row items-center justify-center lg:justify-start gap-3 w-full text-white sm:text-4xl">
-                        Calculadora de <span className="text-primary">Chopp</span>
-                        <CalcIcon size={40} className="text-primary mt-2 lg:mt-0" />
-                    </h2>
-                    <div className="mt-4 h-1 w-16 rounded bg-yellow-500 mx-auto lg:mx-0"></div>
-                    <p className="mt-6 max-w-2xl text-lg text-slate-400 mx-auto lg:mx-0">
-                        Descubra a quantidade ideal de Chopp Ecobier para garantir a alegria da sua festa, sem faltar e sem sobrar!
-                    </p>
-                </div>
-
-                <div className="grid gap-8 lg:grid-cols-3">
-                    {/* Interactive Panel */}
-                    <div className="lg:col-span-2 rounded-3xl border border-white/10 bg-[#141e19]/80 backdrop-blur p-4 sm:p-8 shadow-2xl flex flex-col justify-between">
-
-                        <div className="mb-6 lg:mb-8">
-                            <label className="block text-base lg:text-lg font-bold text-white mb-2 lg:mb-4">Quantos adultos bebem chopp?</label>
-                            <div className="flex items-center gap-4 lg:gap-6">
-                                <input
-                                    type="range"
-                                    min="5"
-                                    max="200"
-                                    step="5"
-                                    value={adults}
-                                    onChange={(e) => setAdults(Number(e.target.value))}
-                                    className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-yellow-500 hover:accent-yellow-400"
-                                />
-                                <div className="flex flex-col items-center justify-center shrink-0 w-[80px]">
-                                    <span className="text-3xl font-extrabold text-yellow-500 leading-none tabular-nums">{adults}</span>
-                                    <span className="text-xs uppercase tracking-wider text-slate-400 font-bold mt-1">Pessoas</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="mb-6 lg:mb-8">
-                            <label className="block text-base lg:text-lg font-bold text-white mb-2 lg:mb-4">Qual o tipo e duração da festa?</label>
-                            <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4">
-                                {Object.entries(durationRates).map(([key, { label }]) => (
-                                    <button
-                                        key={key}
-                                        className={`rounded-xl border-2 px-2 py-2 lg:px-4 lg:py-3 text-xs lg:text-sm font-bold transition-all ${duration === key ? 'border-primary bg-primary text-white shadow-lg shadow-primary/30' : 'border-slate-700 text-slate-400 hover:border-yellow-500 hover:text-white'} ${key === 'longa' ? 'col-span-2 lg:col-span-1' : ''}`}
-                                        onClick={() => setDuration(key)}
-                                    >
-                                        {label}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="mb-6 lg:mb-10 pb-4 lg:pb-8 border-b border-dashed border-white/10">
-                            <label className="flex items-start lg:items-center gap-3 lg:gap-4 cursor-pointer">
-                                <div className="relative">
-                                    <input
-                                        type="checkbox"
-                                        checked={useMargin}
-                                        onChange={() => setUseMargin(!useMargin)}
-                                        className="sr-only peer"
-                                    />
-                                    <div className="w-11 h-6 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary shrink-0"></div>
-                                </div>
-                                <span className="text-sm lg:text-base text-slate-300 font-medium leading-tight">Adicionar margem de segurança <span className="hidden lg:inline">(Recomendado +15%)</span></span>
-                            </label>
-                        </div>
-
-                        {/* Result Panel */}
-                        <div className="grid grid-cols-2 gap-4 sm:gap-8 rounded-2xl bg-linear-to-br from-primary to-[#1a4a32] p-4 sm:p-8 text-white shadow-xl items-center">
-                            <div className="flex flex-col items-center justify-center text-center border-r border-white/20 pr-4 sm:pr-0 sm:border-r-0">
-                                <h4 className="text-[10px] lg:text-sm uppercase tracking-wide text-white/80 mb-1 lg:mb-4">Litros:</h4>
-                                <div className="text-3xl lg:text-5xl font-extrabold text-yellow-500 leading-none tabular-nums">
-                                    {calculation.targetLiters} <small className="text-lg lg:text-2xl text-white font-medium">L</small>
-                                </div>
-                                {useMargin && <span className="hidden sm:inline-block mt-2 rounded-full bg-black/20 px-3 py-1 text-[10px] lg:text-xs text-slate-200">Incluindo ~{calculation.marginLiters}L</span>}
-                            </div>
-
-                            <div>
-                                <h4 className="text-[10px] lg:text-sm uppercase tracking-wide text-white/80 mb-2 lg:mb-4 text-center sm:text-left">Quantidade de Barris:</h4>
-                                <div className="flex flex-col gap-2 lg:gap-3 mb-2 lg:mb-4">
-                                    <div className={`flex items-center gap-2 lg:gap-3 rounded-lg lg:rounded-xl bg-white/10 px-2 py-1.5 lg:px-4 lg:py-3 transition-opacity duration-300 ${calculation.kegs50 > 0 ? 'opacity-100' : 'opacity-40 grayscale'} ${calculation.kegs50 === 0 && calculation.kegs30 > 0 ? 'hidden sm:flex' : ''}`}>
-                                        <Database size={16} className="text-yellow-500 lg:w-6 lg:h-6" />
-                                        <div className="text-xs lg:text-lg whitespace-nowrap">
-                                            <strong className="text-yellow-500 text-sm lg:text-xl tabular-nums">{calculation.kegs50}x</strong> {calculation.kegs50 === 1 ? 'Barril' : 'Barris'} de 50L
-                                        </div>
-                                    </div>
-
-                                    {calculation.kegs50 > 0 && calculation.kegs30 > 0 && (
-                                        <div className="text-center text-lg lg:text-3xl font-extrabold text-white/50 leading-none my-[-4px] lg:my-0">+</div>
-                                    )}
-
-                                    <div className={`flex items-center gap-2 lg:gap-3 rounded-lg lg:rounded-xl bg-white/10 px-2 py-1.5 lg:px-4 lg:py-3 transition-opacity duration-300 ${calculation.kegs30 > 0 ? 'opacity-100' : 'opacity-40 grayscale'} ${calculation.kegs30 === 0 && calculation.kegs50 > 0 ? 'hidden sm:flex' : ''}`}>
-                                        <Database size={14} className="text-yellow-500 lg:w-5 lg:h-5" />
-                                        <div className="text-xs lg:text-lg whitespace-nowrap">
-                                            <strong className="text-yellow-500 text-sm lg:text-xl tabular-nums">{calculation.kegs30}x</strong> {calculation.kegs30 === 1 ? 'Barril' : 'Barris'} de 30L
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-span-2 border-t border-white/20 pt-2 lg:pt-4 text-xs lg:text-sm text-white/80 text-center">
-                                Rende ~<strong className="text-white">{Math.floor((calculation.total * 1000) / 400)} copos</strong> de 400ml.
-                            </div>
-                        </div>
-
-                    </div>
-
-                    {/* Information Side Panel */}
-                    <div className="flex flex-col gap-6">
-                        <div className="relative flex-1 rounded-3xl border border-white/5 bg-[#1a241e] p-6 shadow-lg">
-                            <div className="absolute top-0 right-4 -translate-y-1/2">
-                                <img
-                                    src="/assets/256700-1.png"
-                                    alt="Máquina de Chopp Ecobier"
-                                    className="h-32 object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)] animate-[float-obj_6s_ease-in-out_infinite]"
-                                    style={{ animation: 'float 6s ease-in-out infinite' }}
-                                />
-                            </div>
-
-                            <h3 className="mb-4 mt-6 flex items-center gap-2 text-xl font-bold text-white">
-                                <Lightbulb size={24} className="text-yellow-500" /> Dicas Importantes
-                            </h3>
-                            <ul className="flex flex-col gap-3 text-sm text-slate-400">
-                                <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span><span><strong className="text-slate-200">Quem bebe:</strong> Conte apenas os adultos que bebem chopp.</span></li>
-                                <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span><span><strong className="text-slate-200">Outras bebidas:</strong> Se houver vodka, whisky ou vinho, a quantidade de chopp pode ser reduzida.</span></li>
-                                <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span><span><strong className="text-slate-200">Barril:</strong> Barris comuns são de 30L ou 50L.</span></li>
-                                <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span><span><strong className="text-slate-200">Margem:</strong> Sempre é melhor sobrar do que faltar. Usamos 15% como padrão de margem.</span></li>
-                                <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span><span><strong className="text-slate-200">Serviço:</strong> O chopp deve ser servido entre 0 e -2º.</span></li>
-                            </ul>
-                        </div>
-
-                        <div className="rounded-3xl border border-white/5 bg-[#1a241e] p-6 shadow-lg">
-                            <h3 className="mb-4 flex items-center gap-2 text-xl font-bold text-white leading-tight">
-                                <ClipboardList size={24} className="text-yellow-500" />
-                                <div>Exemplos Práticos<br /><span className="text-sm font-normal text-slate-400">(Para 4-5 horas de festa)</span></div>
-                            </h3>
-                            <ul className="flex flex-col gap-2 text-sm">
-                                <li className="flex items-center justify-between rounded-lg bg-white/5 p-3">
-                                    <strong className="text-slate-200">10 Pessoas:</strong>
-                                    <span className="text-slate-400">15 a 20 Litros</span>
-                                </li>
-                                <li className="flex items-center justify-between rounded-lg bg-white/5 p-3">
-                                    <strong className="text-slate-200">20 Pessoas:</strong>
-                                    <span className="text-slate-400">30 a 40 Litros</span>
-                                </li>
-                                <li className="flex items-center justify-between rounded-lg bg-white/5 p-3">
-                                    <strong className="text-slate-200">30 Pessoas:</strong>
-                                    <span className="text-slate-400">45 a 60 Litros</span>
-                                </li>
-                                <li className="flex items-center justify-between rounded-lg bg-white/5 p-3">
-                                    <strong className="text-slate-200">50 Pessoas:</strong>
-                                    <span className="text-slate-400">75 a 100 Litros</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
+        <section id="calculator" className="relative py-24 bg-gradient-to-b from-[#0a0f0c] via-[#0d1a12] to-[#0a0f0c] overflow-hidden">
+            {/* Background decorations */}
+            <div className="absolute inset-0">
+                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#0a0f0c] to-transparent" />
+                <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0a0f0c] to-transparent" />
+                <div className="absolute top-1/3 left-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl -translate-x-1/2" />
+                <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl translate-x-1/2" />
             </div>
 
-            <style dangerouslySetInnerHTML={{
-                __html: `
-                @keyframes float {
-                    0% { transform: translateY(0px) rotate(0deg); }
-                    50% { transform: translateY(-10px) rotate(2deg); }
-                    100% { transform: translateY(0px) rotate(0deg); }
-                }
-            `}} />
-        </section >
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Header */}
+                <ScrollReveal>
+                    <div className="text-center mb-16">
+                        <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm font-medium text-amber-400 mb-6">
+                            <Beaker className="w-4 h-4" />
+                            Calculadora
+                        </span>
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                            Calculadora de
+                            <br />
+                            <span className="bg-gradient-to-r from-amber-400 to-emerald-400 bg-clip-text text-transparent">
+                                Chopp
+                            </span>
+                        </h2>
+                        <p className="text-lg text-stone-400 max-w-2xl mx-auto">
+                            Descubra a quantidade ideal de Chopp Ecobier para garantir a alegria da sua festa, 
+                            sem faltar e sem sobrar!
+                        </p>
+                    </div>
+                </ScrollReveal>
+
+                <div className="grid gap-8 lg:grid-cols-3">
+                    {/* Calculator Panel */}
+                    <ScrollReveal className="lg:col-span-2">
+                        <GlassCard variant="dark" className="p-6 lg:p-8">
+                            {/* Adults input */}
+                            <div className="mb-8">
+                                <label className="flex items-center gap-2 text-lg font-bold text-white mb-4">
+                                    <Users className="w-5 h-5 text-amber-400" />
+                                    Quantos adultos bebem chopp?
+                                </label>
+                                <div className="flex items-center gap-6">
+                                    <input
+                                        type="range"
+                                        min="5"
+                                        max="200"
+                                        step="5"
+                                        value={adults}
+                                        onChange={(e) => setAdults(Number(e.target.value))}
+                                        className="w-full h-2 bg-stone-700 rounded-lg appearance-none cursor-pointer accent-amber-500 hover:accent-amber-400"
+                                    />
+                                    <div className="flex flex-col items-center justify-center shrink-0 w-20">
+                                        <span className="text-4xl font-extrabold text-amber-400 leading-none tabular-nums">{adults}</span>
+                                        <span className="text-xs uppercase tracking-wider text-stone-500 font-bold mt-1">Pessoas</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Duration buttons */}
+                            <div className="mb-8">
+                                <label className="flex items-center gap-2 text-lg font-bold text-white mb-4">
+                                    <Clock className="w-5 h-5 text-emerald-400" />
+                                    Tipo e duração da festa
+                                </label>
+                                <div className="grid grid-cols-3 gap-3">
+                                    {Object.entries(durationRates).map(([key, { label, sublabel }]) => (
+                                        <button
+                                            key={key}
+                                            onClick={() => setDuration(key)}
+                                            className={`relative flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 ${
+                                                duration === key 
+                                                    ? 'border-emerald-500 bg-emerald-500/20 text-white shadow-lg shadow-emerald-500/25' 
+                                                    : 'border-stone-700 text-stone-400 hover:border-stone-500 hover:text-white'
+                                            }`}
+                                        >
+                                            <span className="font-bold">{label}</span>
+                                            <span className="text-xs opacity-70">{sublabel}</span>
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Safety margin toggle */}
+                            <div className="mb-8 pb-8 border-b border-dashed border-white/10">
+                                <label className="flex items-center gap-4 cursor-pointer group">
+                                    <div className="relative">
+                                        <input
+                                            type="checkbox"
+                                            checked={useMargin}
+                                            onChange={() => setUseMargin(!useMargin)}
+                                            className="sr-only peer"
+                                        />
+                                        <div className="w-12 h-6 bg-stone-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500 shrink-0" />
+                                    </div>
+                                    <span className="text-base text-stone-300 font-medium group-hover:text-white transition-colors">
+                                        Margem de segurança <span className="text-emerald-400">+15%</span>
+                                        <span className="block text-sm text-stone-500">Recomendado para evitar falta</span>
+                                    </span>
+                                </label>
+                            </div>
+
+                            {/* Result */}
+                            <div className="rounded-2xl bg-gradient-to-br from-emerald-900/50 to-amber-900/30 border border-emerald-500/20 p-6 lg:p-8">
+                                <div className="grid md:grid-cols-2 gap-6">
+                                    {/* Liters */}
+                                    <div className="text-center md:border-r border-white/10 md:pr-6">
+                                        <h4 className="text-sm uppercase tracking-wide text-stone-400 mb-2">Total de Litros</h4>
+                                        <div className="text-5xl lg:text-6xl font-extrabold text-amber-400 leading-none tabular-nums">
+                                            {calculation.targetLiters}
+                                            <span className="text-2xl text-white font-medium ml-2">L</span>
+                                        </div>
+                                        {useMargin && (
+                                            <span className="inline-block mt-3 rounded-full bg-emerald-500/20 px-4 py-1 text-sm text-emerald-300">
+                                                Incluindo margem de ~{calculation.marginLiters}L
+                                            </span>
+                                        )}
+                                    </div>
+
+                                    {/* Barrels */}
+                                    <div className="text-center md:text-left">
+                                        <h4 className="text-sm uppercase tracking-wide text-stone-400 mb-4">Quantidade de Barris</h4>
+                                        <div className="space-y-3">
+                                            <div className={`flex items-center justify-center md:justify-start gap-3 p-3 rounded-xl bg-white/5 transition-opacity ${calculation.kegs50 > 0 ? 'opacity-100' : 'opacity-40'}`}>
+                                                <Database className="w-6 h-6 text-amber-400" />
+                                                <span className="text-xl">
+                                                    <strong className="text-amber-400 text-2xl">{calculation.kegs50}</strong>x Barril 50L
+                                                </span>
+                                            </div>
+                                            <div className={`flex items-center justify-center md:justify-start gap-3 p-3 rounded-xl bg-white/5 transition-opacity ${calculation.kegs30 > 0 ? 'opacity-100' : 'opacity-40'}`}>
+                                                <Database className="w-5 h-5 text-amber-400" />
+                                                <span className="text-lg">
+                                                    <strong className="text-amber-400 text-xl">{calculation.kegs30}</strong>x Barril 30L
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="mt-6 pt-6 border-t border-white/10 text-center">
+                                    <p className="text-stone-400">
+                                        Rende aproximadamente <strong className="text-white text-lg">{Math.floor((calculation.total * 1000) / 400)} copos</strong> de 400ml
+                                    </p>
+                                </div>
+                            </div>
+                        </GlassCard>
+                    </ScrollReveal>
+
+                    {/* Info Panel */}
+                    <div className="flex flex-col gap-6">
+                        <ScrollReveal delay={0.2}>
+                            <GlassCard variant="primary" className="p-6 relative overflow-hidden">
+                                {/* Chopeira image - bottom right corner */}
+                                <div className="absolute -bottom-4 -right-4 w-36 h-36 opacity-30">
+                                    <img
+                                        src="/assets/256700-1.png"
+                                        alt="Chopeira Ecobier"
+                                        className="w-full h-full object-contain"
+                                    />
+                                </div>
+
+                                <div className="relative z-10">
+                                    <div className="flex items-start gap-4 mb-4">
+                                        <Lightbulb className="w-6 h-6 text-amber-400 shrink-0 mt-0.5" />
+                                        <h3 className="text-xl font-bold text-white">Dicas Importantes</h3>
+                                    </div>
+                                    <ul className="space-y-3 text-sm text-stone-400">
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-emerald-400 mt-1">•</span>
+                                        <span><strong className="text-white">Quem bebe:</strong> Conte apenas os adultos que bebem chopp</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-emerald-400 mt-1">•</span>
+                                        <span><strong className="text-white">Outras bebidas:</strong> Reduza a quantidade se houver outras opções</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-emerald-400 mt-1">•</span>
+                                        <span><strong className="text-white">Temperatura:</strong> Sirva entre 0ºC e -2ºC</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-emerald-400 mt-1">•</span>
+                                        <span><strong className="text-white">Margem:</strong> Melhor sobrar do que faltar!</span>
+                                    </li>
+                                </ul>
+                                </div>
+                            </GlassCard>
+                        </ScrollReveal>
+
+                        <ScrollReveal delay={0.3}>
+                            <GlassCard variant="amber" className="p-6">
+                                <h3 className="flex items-center gap-2 text-xl font-bold text-white mb-4">
+                                    <ClipboardList className="w-6 h-6 text-amber-400" />
+                                    Exemplos Práticos
+                                </h3>
+                                <p className="text-sm text-stone-500 mb-4">(Para 4-5 horas de festa)</p>
+                                <ul className="space-y-2">
+                                    {[
+                                        { people: '10', liters: '15-20L' },
+                                        { people: '20', liters: '30-40L' },
+                                        { people: '30', liters: '45-60L' },
+                                        { people: '50', liters: '75-100L' },
+                                    ].map((item, index) => (
+                                        <li key={index} className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+                                            <span className="text-white font-medium">{item.people} Pessoas</span>
+                                            <span className="text-amber-400 font-bold">{item.liters}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </GlassCard>
+                        </ScrollReveal>
+                    </div>
+                </div>
+            </div>
+        </section>
     );
 };
 
