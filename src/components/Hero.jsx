@@ -20,7 +20,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#0a0f0c] via-[#0d1a12] to-[#0a0f0c]">
+        <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-linear-to-br from-[#0a0f0c] via-[#0d1a12] to-[#0a0f0c]">
             {/* Animated background elements */}
             <div className="absolute inset-0 z-0">
                 {/* Video background */}
@@ -33,27 +33,27 @@ const Hero = () => {
                 >
                     <source src="/assets/a54c90efe_Ecobier-Chopp-Caneca.mp4" type="video/mp4" />
                 </video>
-                
+
                 {/* Gradient overlays */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#0a0f0c]/95 via-[#0d1a12]/80 to-[#0a0f0c]/95 z-10" />
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-900/20 via-transparent to-transparent z-10" />
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-amber-900/20 via-transparent to-transparent z-10" />
-                
+                <div className="absolute inset-0 bg-linear-to-br from-[#0a0f0c]/95 via-[#0d1a12]/80 to-[#0a0f0c]/95 z-10" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-emerald-900/20 via-transparent to-transparent z-10" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,var(--tw-gradient-stops))] from-amber-900/20 via-transparent to-transparent z-10" />
+
                 {/* Animated blobs */}
-                <div 
+                <div
                     className="absolute top-20 right-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-blob"
                     style={{ transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)` }}
                 />
-                <div 
+                <div
                     className="absolute bottom-20 left-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-blob"
-                    style={{ 
+                    style={{
                         animationDelay: '2s',
-                        transform: `translate(${-mousePosition.x}px, ${-mousePosition.y}px)` 
+                        transform: `translate(${-mousePosition.x}px, ${-mousePosition.y}px)`
                     }}
                 />
-                
+
                 {/* Grid pattern */}
-                <div 
+                <div
                     className="absolute inset-0 opacity-5 z-10"
                     style={{
                         backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
@@ -77,33 +77,33 @@ const Hero = () => {
                                 Distribuidor Oficial Ecobier
                             </div>
                         </ScrollReveal>
-                        
+
                         <ScrollReveal direction="up" delay={0.2}>
                             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight">
                                 Sua festa merece o
                                 <br />
                                 <span className="relative inline-block">
-                                    <span className="relative z-10 bg-gradient-to-r from-emerald-400 via-amber-300 to-emerald-400 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+                                    <span className="relative z-10 bg-linear-to-r from-emerald-400 via-amber-300 to-emerald-400 bg-clip-text text-transparent animate-gradient bg-size-[200%_auto]">
                                         Melhor Chopp
                                     </span>
-                                    <span className="absolute inset-0 blur-2xl bg-gradient-to-r from-emerald-400/50 via-amber-300/50 to-emerald-400/50 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+                                    <span className="absolute inset-0 blur-2xl bg-linear-to-r from-emerald-400/50 via-amber-300/50 to-emerald-400/50 bg-clip-text text-transparent animate-gradient bg-size-[200%_auto]">
                                         Melhor Chopp
                                     </span>
                                 </span>
                             </h1>
                         </ScrollReveal>
-                        
+
                         <ScrollReveal direction="up" delay={0.3}>
                             <p className="text-lg sm:text-xl text-stone-400 leading-relaxed max-w-xl">
-                                Descubra a Experiência <span className="text-emerald-400 font-semibold">ChoppMoc</span> com o autêntico Chopp Ecobier entregue pronto na sua casa ou evento. 
+                                Descubra a Experiência <span className="text-emerald-400 font-semibold">ChoppMoc</span> com o autêntico Chopp Ecobier entregue pronto na sua casa ou evento.
                                 <span className="text-amber-400 font-semibold"> Qualidade premium, sabor incomparável.</span>
                             </p>
                         </ScrollReveal>
-                        
+
                         <ScrollReveal direction="up" delay={0.4}>
                             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
-                                <GlowButton 
-                                    variant="amber" 
+                                <GlowButton
+                                    variant="amber"
                                     size="lg"
                                     href="https://wa.me/5538998606066?text=Olá,%20gostaria%20de%20um%20orçamento%20para%20Chopp!"
                                     icon={ArrowRight}
@@ -112,7 +112,7 @@ const Hero = () => {
                                 </GlowButton>
                             </div>
                         </ScrollReveal>
-                        
+
                         <ScrollReveal direction="up" delay={0.5}>
                             <div className="flex items-center justify-center lg:justify-start gap-8 pt-4">
                                 {[
@@ -128,13 +128,13 @@ const Hero = () => {
                             </div>
                         </ScrollReveal>
                     </div>
-                    
+
                     {/* Right Content - Product Image */}
                     <ScrollReveal direction="up" delay={0.3} className="relative flex items-center justify-center mt-8 lg:mt-0">
                         <div className="relative">
                             {/* Subtle glow */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-amber-500/20 blur-3xl rounded-full scale-75" />
-                            
+                            <div className="absolute inset-0 bg-linear-to-r from-emerald-500/20 to-amber-500/20 blur-3xl rounded-full scale-75" />
+
                             {/* Main image */}
                             <img
                                 src="/assets/Copo_Joinvile_EcobierChopp.png"

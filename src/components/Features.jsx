@@ -44,11 +44,11 @@ const Features = () => {
     ];
 
     return (
-        <section id="features" className="relative py-24 bg-gradient-to-b from-[#0a0f0c] via-[#0d1a12] to-[#0a0f0c] overflow-hidden">
+        <section id="features" className="relative py-24 bg-linear-to-b from-[#0a0f0c] via-[#0d1a12] to-[#0a0f0c] overflow-hidden">
             {/* Background decorations */}
             <div className="absolute inset-0">
-                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#0a0f0c] to-transparent" />
-                <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0a0f0c] to-transparent" />
+                <div className="absolute top-0 left-0 w-full h-32 bg-linear-to-b from-[#0a0f0c] to-transparent" />
+                <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-t from-[#0a0f0c] to-transparent" />
                 <div className="absolute top-1/2 left-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl -translate-x-1/2" />
                 <div className="absolute top-1/2 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl translate-x-1/2" />
             </div>
@@ -64,7 +64,7 @@ const Features = () => {
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
                             O Sabor Autêntico do
                             <br />
-                            <span className="bg-gradient-to-r from-emerald-400 via-amber-300 to-emerald-400 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+                            <span className="bg-linear-to-r from-emerald-400 via-amber-300 to-emerald-400 bg-clip-text text-transparent animate-gradient bg-size-[200%_auto]">
                                 Chopp Ecobier
                             </span>
                         </h2>
@@ -97,13 +97,13 @@ const Features = () => {
                                     
                                     {/* Content */}
                                     <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                                    <p className="text-stone-400 flex-grow">{feature.description}</p>
+                                    <p className="text-stone-400 grow">{feature.description}</p>
                                     
                                     {/* Decorative line */}
                                     <div className={`mt-6 h-1 w-12 rounded-full ${
                                         feature.color === 'emerald' 
-                                            ? 'bg-gradient-to-r from-emerald-500 to-emerald-400' 
-                                            : 'bg-gradient-to-r from-amber-500 to-amber-400'
+                                            ? 'bg-linear-to-r from-emerald-500 to-emerald-400' 
+                                            : 'bg-linear-to-r from-amber-500 to-amber-400'
                                     }`} />
                                 </div>
                             </GlassCard>
@@ -114,10 +114,10 @@ const Features = () => {
                 {/* Product showcase */}
                 <ScrollReveal delay={0.3}>
                     <div className="mt-20 relative">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-96 h-96 bg-gradient-to-r from-emerald-500/20 to-amber-500/20 rounded-full blur-3xl" />
+                            <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-96 h-96 bg-linear-to-r from-emerald-500/20 to-amber-500/20 rounded-full blur-3xl" />
                         </div>
-                        <div className="relative flex flex-col lg:flex-row items-center gap-12 bg-gradient-to-r from-emerald-900/20 to-amber-900/20 rounded-3xl p-8 lg:p-12 border border-white/5">
+                        <div className="relative flex flex-col lg:flex-row items-center gap-12 bg-linear-to-r from-emerald-900/20 to-amber-900/20 rounded-3xl p-8 lg:p-12 border border-white/5">
                             <div className="flex-1 text-center lg:text-left">
                                 <h3 className="text-3xl font-bold text-white mb-4">
                                     Experimente a <span className="text-emerald-400">Diferença</span>
@@ -137,9 +137,9 @@ const Features = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex-shrink-0">
+                            <div className="shrink-0">
                                 <div className="relative">
-                                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/30 to-amber-500/30 blur-2xl rounded-full" />
+                                    <div className="absolute inset-0 bg-linear-to-r from-emerald-500/30 to-amber-500/30 blur-2xl rounded-full" />
                                     <img
                                         src="/assets/Copo_Joinvile_EcobierChopp.png"
                                         alt="Copo Ecobier Chopp"
