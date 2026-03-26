@@ -13,18 +13,18 @@ const FloatingWhatsApp = () => {
                     </div>
                     <div className="absolute bottom-0 right-6 transform translate-y-1/2 rotate-45 w-2 h-2 bg-stone-900 border-r border-b border-white/10" />
                 </div>
-                
+
                 {/* Main button */}
                 <a
                     href="https://wa.me/5538998606066?text=Olá,%20gostaria%20de%20um%20orçamento%20para%20Chopp!"
-                    className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#25D366] to-[#128C7E] text-white shadow-lg shadow-[#25D366]/30 transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-[#25D366]/40 animate-[pulse-glow_3s_ease-in-out_infinite]"
+                    className="flex h-14 w-14 items-center justify-center rounded-full bg-linear-to-br from-[#25D366] to-[#128C7E] text-white shadow-lg shadow-[#25D366]/30 transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-[#25D366]/40 animate-[pulse-glow_3s_ease-in-out_infinite]"
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Fale conosco no WhatsApp"
                 >
                     {/* Pulse ring */}
                     <span className="absolute inset-0 rounded-full bg-[#25D366]/30 animate-ping" />
-                    
+
                     {/* Icon */}
                     <MessageCircle className="h-6 w-6 relative z-10" strokeWidth={2} />
                 </a>

@@ -48,11 +48,11 @@ const Calculator = () => {
     }, [adults, duration, useMargin]);
 
     return (
-        <section id="calculator" className="relative py-24 bg-gradient-to-b from-[#0a0f0c] via-[#0d1a12] to-[#0a0f0c] overflow-hidden">
+        <section id="calculator" className="relative py-24 bg-linear-to-b from-[#0a0f0c] via-[#0d1a12] to-[#0a0f0c] overflow-hidden">
             {/* Background decorations */}
             <div className="absolute inset-0">
-                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#0a0f0c] to-transparent" />
-                <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0a0f0c] to-transparent" />
+                <div className="absolute top-0 left-0 w-full h-32 bg-linear-to-b from-[#0a0f0c] to-transparent" />
+                <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-t from-[#0a0f0c] to-transparent" />
                 <div className="absolute top-1/3 left-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl -translate-x-1/2" />
                 <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl translate-x-1/2" />
             </div>
@@ -68,12 +68,12 @@ const Calculator = () => {
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
                             Calculadora de
                             <br />
-                            <span className="bg-gradient-to-r from-amber-400 to-emerald-400 bg-clip-text text-transparent">
+                            <span className="bg-linear-to-r from-amber-400 to-emerald-400 bg-clip-text text-transparent">
                                 Chopp
                             </span>
                         </h2>
                         <p className="text-lg text-stone-400 max-w-2xl mx-auto">
-                            Descubra a quantidade ideal de Chopp Ecobier para garantir a alegria da sua festa, 
+                            Descubra a quantidade ideal de Chopp Ecobier para garantir a alegria da sua festa,
                             sem faltar e sem sobrar!
                         </p>
                     </div>
@@ -117,11 +117,10 @@ const Calculator = () => {
                                         <button
                                             key={key}
                                             onClick={() => setDuration(key)}
-                                            className={`relative flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 ${
-                                                duration === key 
-                                                    ? 'border-emerald-500 bg-emerald-500/20 text-white shadow-lg shadow-emerald-500/25' 
+                                            className={`relative flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 ${duration === key
+                                                    ? 'border-emerald-500 bg-emerald-500/20 text-white shadow-lg shadow-emerald-500/25'
                                                     : 'border-stone-700 text-stone-400 hover:border-stone-500 hover:text-white'
-                                            }`}
+                                                }`}
                                         >
                                             <span className="font-bold">{label}</span>
                                             <span className="text-xs opacity-70">{sublabel}</span>
@@ -150,7 +149,7 @@ const Calculator = () => {
                             </div>
 
                             {/* Result */}
-                            <div className="rounded-2xl bg-gradient-to-br from-emerald-900/50 to-amber-900/30 border border-emerald-500/20 p-6 lg:p-8">
+                            <div className="rounded-2xl bg-linear-to-br from-emerald-900/50 to-amber-900/30 border border-emerald-500/20 p-6 lg:p-8">
                                 <div className="grid md:grid-cols-2 gap-6">
                                     {/* Liters */}
                                     <div className="text-center md:border-r border-white/10 md:pr-6">
@@ -214,23 +213,23 @@ const Calculator = () => {
                                         <h3 className="text-xl font-bold text-white">Dicas Importantes</h3>
                                     </div>
                                     <ul className="space-y-3 text-sm text-stone-400">
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-emerald-400 mt-1">•</span>
-                                        <span><strong className="text-white">Quem bebe:</strong> Conte apenas os adultos que bebem chopp</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-emerald-400 mt-1">•</span>
-                                        <span><strong className="text-white">Outras bebidas:</strong> Reduza a quantidade se houver outras opções</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-emerald-400 mt-1">•</span>
-                                        <span><strong className="text-white">Temperatura:</strong> Sirva entre 0ºC e -2ºC</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-emerald-400 mt-1">•</span>
-                                        <span><strong className="text-white">Margem:</strong> Melhor sobrar do que faltar!</span>
-                                    </li>
-                                </ul>
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-emerald-400 mt-1">•</span>
+                                            <span><strong className="text-white">Quem bebe:</strong> Conte apenas os adultos que bebem chopp</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-emerald-400 mt-1">•</span>
+                                            <span><strong className="text-white">Outras bebidas:</strong> Reduza a quantidade se houver outras opções</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-emerald-400 mt-1">•</span>
+                                            <span><strong className="text-white">Temperatura:</strong> Sirva entre 0ºC e -2ºC</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-emerald-400 mt-1">•</span>
+                                            <span><strong className="text-white">Margem:</strong> Melhor sobrar do que faltar!</span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </GlassCard>
                         </ScrollReveal>

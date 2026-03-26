@@ -10,10 +10,10 @@ const Footer = () => {
     };
 
     return (
-        <footer id="contact" className="relative bg-gradient-to-b from-[#0a0f0c] via-[#061008] to-[#030503] pt-20 pb-8 text-stone-300 overflow-hidden">
+        <footer id="contact" className="relative bg-linear-to-b from-[#0a0f0c] via-[#061008] to-[#030503] pt-20 pb-8 text-stone-300 overflow-hidden">
             {/* Background decorations */}
             <div className="absolute inset-0">
-                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#0a0f0c] to-transparent" />
+                <div className="absolute top-0 left-0 w-full h-32 bg-linear-to-b from-[#0a0f0c] to-transparent" />
                 <div className="absolute bottom-20 left-20 w-72 h-72 bg-emerald-500/5 rounded-full blur-3xl" />
                 <div className="absolute top-40 right-20 w-72 h-72 bg-amber-500/5 rounded-full blur-3xl" />
             </div>
@@ -32,12 +32,12 @@ const Footer = () => {
                         </p>
                         {/* Social links */}
                         <div className="flex gap-4">
-                            <a href="https://wa.me/5538998606066" target="_blank" rel="noopener noreferrer" 
-                               className="p-3 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-emerald-400 hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all duration-300">
+                            <a href="https://wa.me/5538998606066" target="_blank" rel="noopener noreferrer"
+                                className="p-3 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-emerald-400 hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all duration-300">
                                 <MessageCircle className="w-5 h-5" />
                             </a>
-                            <a href="https://www.instagram.com/choppmoc/" target="_blank" rel="noopener noreferrer" 
-                               className="p-3 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300">
+                            <a href="https://www.instagram.com/choppmoc/" target="_blank" rel="noopener noreferrer"
+                                className="p-3 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300">
                                 <Instagram className="w-5 h-5" />
                             </a>
                         </div>
@@ -46,7 +46,7 @@ const Footer = () => {
                     {/* Quick Links */}
                     <div className="lg:col-span-1 flex flex-col items-center text-center lg:items-start lg:text-left">
                         <h3 className="text-white font-bold text-lg mb-6 flex items-center justify-center lg:justify-start gap-2">
-                            <span className="w-8 h-0.5 bg-gradient-to-r from-emerald-500 to-amber-500 rounded-full" />
+                            <span className="w-8 h-0.5 bg-linear-to-r from-emerald-500 to-amber-500 rounded-full" />
                             Links Rápidos
                         </h3>
                         <ul className="space-y-3 w-full flex flex-col items-center lg:items-start">
@@ -70,13 +70,13 @@ const Footer = () => {
                     {/* Contact Info */}
                     <div className="lg:col-span-1 flex flex-col items-center text-center lg:items-start lg:text-left">
                         <h3 className="text-white font-bold text-lg mb-6 flex items-center justify-center lg:justify-start gap-2">
-                            <span className="w-8 h-0.5 bg-gradient-to-r from-emerald-500 to-amber-500 rounded-full" />
+                            <span className="w-8 h-0.5 bg-linear-to-r from-emerald-500 to-amber-500 rounded-full" />
                             Contato
                         </h3>
                         <ul className="space-y-4 w-full flex flex-col items-center lg:items-start">
                             <li>
-                                <a href="https://wa.me/5538998606066" target="_blank" rel="noopener noreferrer" 
-                                   className="flex items-center justify-center lg:justify-start gap-3 text-stone-400 hover:text-emerald-400 transition-colors group">
+                                <a href="https://wa.me/5538998606066" target="_blank" rel="noopener noreferrer"
+                                    className="flex items-center justify-center lg:justify-start gap-3 text-stone-400 hover:text-emerald-400 transition-colors group">
                                     <div className="p-2 rounded-lg bg-emerald-500/10 group-hover:bg-emerald-500/20 transition-colors">
                                         <Phone className="w-4 h-4 text-emerald-500" />
                                     </div>
@@ -108,7 +108,7 @@ const Footer = () => {
                     {/* Map */}
                     <div className="lg:col-span-1 flex flex-col items-center text-center lg:items-start lg:text-left">
                         <h3 className="text-white font-bold text-lg mb-6 flex items-center justify-center lg:justify-start gap-2">
-                            <span className="w-8 h-0.5 bg-gradient-to-r from-emerald-500 to-amber-500 rounded-full" />
+                            <span className="w-8 h-0.5 bg-linear-to-r from-emerald-500 to-amber-500 rounded-full" />
                             Localização
                         </h3>
                         <GlassCard variant="dark" className="overflow-hidden w-full">
@@ -127,7 +127,7 @@ const Footer = () => {
                             href={googleMapsUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="mt-4 w-full text-center rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 py-2.5 text-sm font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:shadow-emerald-500/40 hover:-translate-y-0.5 inline-block"
+                            className="mt-4 w-full text-center rounded-full bg-linear-to-r from-emerald-600 to-emerald-500 py-2.5 text-sm font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:shadow-emerald-500/40 hover:-translate-y-0.5 inline-block"
                         >
                             Ver no Maps
                         </a>
@@ -143,7 +143,7 @@ const Footer = () => {
                         <span className="text-sm text-stone-500">
                             Distribuidor Autorizado <span className="font-bold text-emerald-400">Ecobier</span>
                         </span>
-                        <button 
+                        <button
                             onClick={scrollToTop}
                             className="p-2 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-1"
                         >
